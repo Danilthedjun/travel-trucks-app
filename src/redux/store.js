@@ -10,29 +10,25 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import campersReducer from "./campers/slice"; // Импорт слайса кемперов
-import filtersReducer from "./filters/slice"; // Импорт слайса фильтров
-import favoritesReducer from "./favorites/slice"; // Импорт слайса избранного
+import campersReducer from "./campers/slice";
+import filtersReducer from "./filters/slice";
+import favoritesReducer from "./favorites/slice";
 
-// Конфигурация persist для фильтров
 const filtersPersistConfig = {
   key: "filters",
   storage,
 };
 
-// Применяем persistReducer к фильтрам
 const persistedFiltersReducer = persistReducer(
   filtersPersistConfig,
   filtersReducer
 );
 
-// Конфигурация persist для избранного
 const favoritesPersistConfig = {
   key: "favorites",
   storage,
 };
 
-// Применяем persistReducer к избранному
 const persistedFavoritesReducer = persistReducer(
   favoritesPersistConfig,
   favoritesReducer
@@ -40,9 +36,9 @@ const persistedFavoritesReducer = persistReducer(
 
 export const store = configureStore({
   reducer: {
-    campers: campersReducer, // Редьюсер кемперов
-    filters: persistedFiltersReducer, // Persisted редьюсер для фильтров
-    favorites: persistedFavoritesReducer, // Persisted редьюсер для избранного
+    campers: campersReducer,
+    filters: persistedFiltersReducer,
+    favorites: persistedFavoritesReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

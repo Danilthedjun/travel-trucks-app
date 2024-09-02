@@ -13,7 +13,6 @@ const activeLink = ({ isActive }) => clsx(css.link, isActive && css.activeLink);
 export default function CamperDescription() {
   const camper = useSelector(getSelectedCamper);
 
-  // Проверка на случай, если данных нет
   if (!camper) {
     return <p>Camper data is not available.</p>;
   }
